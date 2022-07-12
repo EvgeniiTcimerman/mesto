@@ -1,0 +1,12 @@
+.profile-info__edit {
+  width: 10px;
+  height: 10px;
+  padding: 7px;
+  margin-top: 15px;
+  border: 1px solid #fff;
+}
+
+.profile-info__edit:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
