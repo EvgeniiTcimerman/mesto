@@ -1,12 +1,12 @@
-.profile-info__name {
+.place__name {
     font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-size: 42px;
-    line-height: 1.14;
-    font-weight: 500;
-    color: #fff;
+    font-size: 24px;
+    line-height: 1.21;
+    font-weight: 900;
     text-align: left;
-    padding-bottom: 16px;
+    color: #000;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    margin: 25px 0 25px 15px;
 }

@@ -1,0 +1,8 @@
+.place__photo {
+    width: 100%;
+    max-width: 282px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    /* border-radius: 10px; */
+}

@@ -1,0 +1,6 @@
+.place__info {
+    background-color: #fff;
+    max-width: 282px;
+    display: flex;
+    flex-direction: row;
+}
