@@ -1,4 +1,4 @@
-.popup__edit-name {
+.popup__edit {
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     min-height: 27px;
     font-size: 14px;
@@ -9,5 +9,8 @@
     box-sizing: border-box;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
+}
+
+.popup__edit:focus {
+    outline: none;
 }
