@@ -1,8 +1,0 @@
-.profile-info {
-    max-width: 336px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 22px 0 25px;
-}

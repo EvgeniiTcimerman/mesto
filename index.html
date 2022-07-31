@@ -13,13 +13,25 @@
     <main class="content">
       <section class="profile">
           <img class="profile__photo" src="./images/jacque_iv_cousteau.jpg" alt="Фото Жака Ива Кусто" ></img>
-          <div class="profile-info">
-            <h1 class="profile-info__name">Жак-Ив Кусто</р>
-            <img class="profile-info__edit" src="./images/pen_edit.svg" alt="Иконка редактирования профиля" ></img> 
-            <h2 class="profile-info__description">Исследователь океана</h2>
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто
+              <button class="profile__edit-button" type="button"></button>
+            </h1>
+            <h2 class="profile__description">Исследователь океана</h2>
           </div>
           <img class="profile__add-button" src="./images/plus_add.svg" alt="Иконка добавления профиля" ></img>
       </section>
+      <div class="popup popup_opened">
+        <div class="popup__content">
+          <button class="popup__close" type="button"></button>
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form class="popup__form">
+            <input class="popup__edit-name" type="text" value="" id="popup__edit-name">
+            <input class="popup__edit-description" type="text" value="" id="popup__edit-description">
+            <button class="popup__submit-button" type="submit" id="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
       <section class="places">
         <ul class="places__grid">
           <li class="place">

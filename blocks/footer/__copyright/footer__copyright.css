@@ -6,3 +6,10 @@
     text-align: left;
     color: #545454;
 }
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .footer__copyright {
+        text-align: center;
+    }
+ }
+ 

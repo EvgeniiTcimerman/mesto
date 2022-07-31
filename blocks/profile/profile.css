@@ -7,3 +7,25 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+    .profile {
+       max-width: 700px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+   .profile {
+      max-width: 440px;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+}
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+   .profile {
+      max-width: 320px;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+}

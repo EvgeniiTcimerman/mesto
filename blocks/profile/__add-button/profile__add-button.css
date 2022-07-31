@@ -12,3 +12,15 @@
     transition: opacity 0.3s ease;
     cursor: pointer;
 }
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .profile__add-button {
+      margin: auto;
+    }
+ }
+ 
+ @media screen and (min-width: 320px) and (max-width: 479px) {
+    .profile__add-button {
+        margin: auto;
+    }
+ }
