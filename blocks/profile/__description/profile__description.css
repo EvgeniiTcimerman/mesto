@@ -12,11 +12,9 @@
     min-width: 336px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 479px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
     .profile__description {
         font-size: 14px;
-        line-height: 1;
-        font-weight: 400;
         text-align: center;
         min-width: 282px;
     }

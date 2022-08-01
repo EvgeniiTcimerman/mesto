@@ -1,6 +1,7 @@
 .header__logo {
     width: 142px;
     height: auto;
+    padding-bottom: 40px;
     object-fit: cover;
 }
 
@@ -8,5 +9,6 @@
   .header__logo {
     width: 104px;
     margin-left: 27px;
+    padding-bottom: 30px;
    }
 }

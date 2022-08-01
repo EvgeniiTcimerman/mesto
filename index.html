@@ -23,31 +23,40 @@
         />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button" type="button"></button>
-          <h2 class="profile__description">Исследователь океана</h2>
+          <button
+            class="profile__edit-button"
+            type="button"
+            aria-label="edit"
+          ></button>
+          <p class="profile__description">Исследователь океана</p>
         </div>
-        <img
-          class="profile__add-button"
-          src="./images/plus_add.svg"
-          alt="Иконка добавления профиля"
-        />
+        <button class="profile__add-button" type="button"></button>
       </section>
       <div class="popup">
         <div class="popup__content">
-          <button class="popup__close" type="button"></button>
+          <button
+            class="popup__close"
+            type="button"
+            aria-label="close"
+          ></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form">
+          <form class="popup__form" name="profile">
             <input
-              class="popup__edit popup__edit_name"
+              class="popup__edit popup__edit_type_name"
               type="text"
               name="name"
             />
             <input
-              class="popup__edit popup__edit_description"
+              class="popup__edit popup__edit_type_description"
               type="text"
               name="job"
             />
-            <button class="popup__submit-button" type="submit" id="submit">
+            <button
+              class="popup__submit-button"
+              type="submit"
+              id="submit"
+              aria-label="save"
+            >
               Сохранить
             </button>
           </form>
@@ -62,12 +71,12 @@
               alt="Фото крепости в Карачаевске"
             />
             <div class="place__info">
-              <p class="place__name">Карачаевск</p>
-              <img
+              <h2 class="place__name">Карачаевск</h2>
+              <button
                 class="place__like"
-                src="./images/Like_logo.svg"
-                alt="Логотип лайка"
-              />
+                type="button"
+                aria-label="like"
+              ></button>
             </div>
           </li>
           <li class="place">
@@ -77,12 +86,12 @@
               alt="Фото Эльбруса"
             />
             <div class="place__info">
-              <p class="place__name">Гора Эльбрус</p>
-              <img
+              <h2 class="place__name">Гора Эльбрус</h2>
+              <button
                 class="place__like"
-                src="./images/Like_logo.svg"
-                alt="Логотип лайка"
-              />
+                type="button"
+                aria-label="like"
+              ></button>
             </div>
           </li>
           <li class="place">
@@ -92,12 +101,12 @@
               alt="Фото Домбая"
             />
             <div class="place__info">
-              <p class="place__name">Домбай</p>
-              <img
+              <h2 class="place__name">Домбай</h2>
+              <button
                 class="place__like"
-                src="./images/Like_logo.svg"
-                alt="Логотип лайка"
-              />
+                type="button"
+                aria-label="like"
+              ></button>
             </div>
           </li>
           <li class="place">
@@ -107,12 +116,12 @@
               alt="Фото Эльбруса"
             />
             <div class="place__info">
-              <p class="place__name">Гора Эльбрус</p>
-              <img
+              <h2 class="place__name">Гора Эльбрус</h2>
+              <button
                 class="place__like"
-                src="./images/Like_logo.svg"
-                alt="Логотип лайка"
-              />
+                type="button"
+                aria-label="like"
+              ></button>
             </div>
           </li>
           <li class="place">
@@ -122,12 +131,12 @@
               alt="Фото Домбая"
             />
             <div class="place__info">
-              <p class="place__name">Домбай</p>
-              <img
+              <h2 class="place__name">Домбай</h2>
+              <button
                 class="place__like"
-                src="./images/Like_logo.svg"
-                alt="Логотип лайка"
-              />
+                type="button"
+                aria-label="like"
+              ></button>
             </div>
           </li>
           <li class="place">
@@ -137,12 +146,12 @@
               alt="Фото крепости в Карачаевске"
             />
             <div class="place__info">
-              <p class="place__name">Карачаево-Черкесск</p>
-              <img
+              <h2 class="place__name">Карачаево-Черкесск</h2>
+              <button
                 class="place__like"
-                src="./images/Like_logo.svg"
-                alt="Логотип лайка"
-              />
+                type="button"
+                aria-label="like"
+              ></button>
             </div>
           </li>
         </ul>
@@ -151,6 +160,6 @@
     <footer class="footer">
       <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
     </footer>
-    <script src="./index.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

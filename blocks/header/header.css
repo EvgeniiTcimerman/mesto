@@ -1,8 +1,8 @@
 .header {
     max-width: 880px;
-    min-height: 74px;
     margin: 45px auto 36px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7); 
+    box-sizing: border-box;
 }
 
 @media screen and (min-width: 768px) and (max-width: 979px) {
@@ -21,6 +21,5 @@
     .header {
        max-width: 320px;
        margin: 28px auto 38px;
-       min-height: 56px;
     }
 }
