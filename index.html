@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./scripts/index.js" defer></script>
     <title>Красивые места России</title>
   </head>
   <body class="page">
@@ -26,7 +27,7 @@
           <button
             class="profile__edit-button"
             type="button"
-            aria-label="edit"
+            aria-label="Редактировать"
           ></button>
           <p class="profile__description">Исследователь океана</p>
         </div>
@@ -74,11 +75,12 @@
               class="popup__edit popup__edit_type_place-title"
               type="text"
               name="title"
+              required
               placeholder="Название"
             />
             <input
               class="popup__edit popup__edit_type_place-link"
-              type="text"
+              type="url"
               name="link"
               placeholder="Ссылка на картинку"
             />
@@ -99,7 +101,7 @@
             type="button"
             aria-label="close"
           ></button>
-          <img class="popup__img" src="#" alt="#" />
+          <img class="popup__img" src="#" alt="" />
           <h3 class="popup__subtitle"></h3>
         </div>
       </div>
@@ -114,14 +116,20 @@
     <template class="template-place">
       <li class="place">
         <img class="place__photo" src= alt= />
-        <button class="place__delete" type="button" aria-label="like"></button>
+        <button
+          class="place__delete"
+          type="button"
+          aria-label="Удаление"
+        ></button>
         <div class="place__info">
           <h2 class="place__name"></h2>
-          <button class="place__like" type="button" aria-label="like"></button>
+          <button
+            class="place__like"
+            type="button"
+            aria-label="Нравится"
+          ></button>
         </div>
       </li>
     </template>
-
-    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
