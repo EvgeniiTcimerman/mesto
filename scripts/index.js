@@ -175,11 +175,11 @@ closePopupImage.addEventListener('click', () => {
 
 popupFormEdit.addEventListener('submit', formSubmitHandler);
 
-popupFormAdd.addEventListener('submit', e => {
-  e.preventDefault()
+popupFormAdd.addEventListener('submit', evt => {
+  evt.preventDefault()
   createCard({
-    name: e.target.title.value,
-    link: e.target.link.value,
+    name: evt.target.title.value,
+    link: evt.target.link.value,
   })
   closePopup(popupPlace);
 })
