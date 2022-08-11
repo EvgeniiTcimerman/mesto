@@ -7,9 +7,9 @@
     border: 0;
     width: 32px;
     height: 32px;
-    margin-left: auto;
-    margin-right: -40px;
-    margin-top: -40px;
+    position: absolute;
+    top: -40px;
+    right: -40px;
 }
 
 .popup__close:hover {
@@ -20,9 +20,9 @@
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
     .popup__close {
-        width: 20px;
-        height: 20px;
-        margin-right: 0;
-        margin-top: -36px;
+      width: 20px;
+      height: 20px;
+      top: -36px;
+      right: 0;
     }
 }
