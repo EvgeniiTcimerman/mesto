@@ -1,7 +1,7 @@
 .place__like {
-    margin: 0 20px 0 auto;
+    margin: auto 20px auto auto;
     min-width: 22px;
-    height: auto;
+    height: 19px;
     border: 0;
     padding: 0;
     box-sizing: border-box;
