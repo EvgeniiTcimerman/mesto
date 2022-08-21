@@ -53,7 +53,8 @@ const selectors = {
   popupProfile: '.popup_type_edit',
   popupPlace: '.popup_type_new-card',
   likeButton: '.place__like',
-  deleteButton: '.place__delete'
+  deleteButton: '.place__delete',
+  popupWindow: '.popup'
 }
 
 // объявление переменных
@@ -65,6 +66,7 @@ const closePopupProfileButton = document.querySelector(selectors.closePopupProfi
 const closePopupPlaceButton = document.querySelector(selectors.closePopupPlaceButton);
 const closePopupImageButton = document.querySelector(selectors.closePopupImageButton);
 
+const popupWindow = document.querySelectorAll(selectors.popupWindow);
 const popupProfileForm = document.querySelector(selectors.popupProfileForm);
 const popupProfilePlace = document.querySelector(selectors.popupProfilePlace);
 const popupProfile = document.querySelector(selectors.popupProfile);
@@ -86,11 +88,21 @@ const places = document.querySelector(selectors.places);
 
 // функция открытия и закрытия popup
 
+const handleEscUp = (evt) => {
+   if (evt.key === 'Escape') {
+    closePopup(popupProfile);
+    closePopup(popupPlace);
+    closePopup(popupImage);
+  }
+};
+
 function openPopup(modal) {
+  document.addEventListener('keydown', handleEscUp);
   modal.classList.add('popup_opened');
 }
 
 function closePopup(modal) {
+  document.removeEventListener('keydown', handleEscUp);
   modal.classList.remove("popup_opened");
 }
 
@@ -151,7 +163,6 @@ function createInitialsCards() {
 createInitialsCards();
 
 
-
 // обработчики событий
 
   buttonEdit.addEventListener('click', () => {
@@ -160,8 +171,7 @@ createInitialsCards();
   openPopup(popupProfile)});
 
   buttonAdd.addEventListener('click', () => {
-  placeTitleInput.value = "";
-  placeLinkInput.value = "";
+  popupProfilePlace.reset();
   openPopup(popupPlace)});
 
   closePopupProfileButton.addEventListener('click', () => {
@@ -185,4 +195,14 @@ popupProfilePlace.addEventListener('submit', evt => {
     link: evt.target.link.value,
   }, places)
   closePopup(popupPlace);
-})
+});
+
+  popupWindow.forEach(function (popupWindow) {
+    popupWindow.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
+        closePopup(popupWindow);
+      }
+    });
+  });
+
+

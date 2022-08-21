@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
     <title>Красивые места России</title>
   </head>
   <body class="page">
@@ -38,26 +39,40 @@
           <button
             class="popup__close popup__close_type_edit"
             type="button"
-            aria-label="close"
+            aria-label="Закрыть"
           ></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form" name="profile">
+          <form class="popup__form" name="profile" novalidate>
             <input
               class="popup__edit popup__edit_type_name"
               type="text"
               name="name"
+              id="name"
+              minlength="2"
+              maxlength="40"
               required
             />
+            <span
+              id="name-error"
+              class="popup__item-error popup__item-error_name"
+            ></span>
             <input
               class="popup__edit popup__edit_type_description"
               type="text"
-              name="job"
+              name="description"
+              id="description"
+              minlength="2"
+              maxlength="200"
               required
             />
+            <span
+              id="description-error"
+              class="popup__item-error popup__item-error_description"
+            ></span>
             <button
               class="popup__submit-button"
               type="submit"
-              aria-label="save"
+              aria-label="Сохранить"
             >
               Сохранить
             </button>
@@ -69,27 +84,40 @@
           <button
             class="popup__close popup__close_type_add"
             type="button"
-            aria-label="close"
+            aria-label="Закрыть"
           ></button>
           <h3 class="popup__title">Новое Место</h3>
-          <form class="popup__form" name="place">
+          <form class="popup__form" name="place" novalidate>
             <input
               class="popup__edit popup__edit_type_place-title"
               type="text"
               name="title"
+              id="title"
+              minlength="2"
+              maxlength="30"
               required
               placeholder="Название"
             />
+            <span
+              id="title-error"
+              class="popup__item-error popup__item-error_title"
+            ></span>
             <input
               class="popup__edit popup__edit_type_place-link"
               type="url"
               name="link"
+              id="link"
               placeholder="Ссылка на картинку"
+              required
             />
+            <span
+              id="link-error"
+              class="popup__item-error popup__item-error_link"
+            ></span>
             <button
               class="popup__submit-button"
               type="submit"
-              aria-label="save"
+              aria-label="Сохранить"
             >
               Сохранить
             </button>
@@ -101,7 +129,7 @@
           <button
             class="popup__close popup__close_type_img"
             type="button"
-            aria-label="close"
+            aria-label="Закрыть"
           ></button>
           <img class="popup__img" src="#" alt="" />
           <h3 class="popup__subtitle"></h3>
