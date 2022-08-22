@@ -14,12 +14,12 @@ enableValidation(validationSelectors);
 function enableValidation (validationSelectors) {
   const formList = Array.from(document.querySelectorAll(validationSelectors.formSelector));
   formList.forEach((formElement) => {
-    setEventListeners(formElement);
+    setEventListeners(formElement, validationSelectors);
   });
 }
 
 
-function setEventListeners (formElement) {
+function setEventListeners (formElement, validationSelectors) {
   const inputList = Array.from(formElement.querySelectorAll(validationSelectors.inputSelector));
   const submitButton = formElement.querySelector(validationSelectors.submitButtonSelector);
 
@@ -27,24 +27,24 @@ function setEventListeners (formElement) {
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(formElement, validationSelectors.inputSelector, submitButton);
+      checkInputValidity(formElement, inputElement, validationSelectors);
+      toggleButtonState(formElement, validationSelectors.inputSelector, submitButton, validationSelectors);
     });
   });
 }
 
 
-function checkInputValidity (formElement, inputElement) {
+function checkInputValidity (formElement, inputElement, validationSelectors) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, validationSelectors);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, validationSelectors);
   }
 }
 
 
 // функция отображения ошибки
-function showInputError (formElement, inputElement, errorMessage) {
+function showInputError (formElement, inputElement, errorMessage, validationSelectors) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(validationSelectors.errorClass);
   errorElement.textContent = errorMessage;
@@ -53,7 +53,7 @@ function showInputError (formElement, inputElement, errorMessage) {
 
 
 // функция скрытия ошибки
-function hideInputError (formElement, inputElement) {
+function hideInputError (formElement, inputElement, validationSelectors) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`); 
   inputElement.classList.remove(validationSelectors.errorClass);
   errorElement.classList.remove(validationSelectors.inputErrorClass);
@@ -61,7 +61,7 @@ function hideInputError (formElement, inputElement) {
 }
 
 
-function toggleButtonState (formElement, inputSelector, submitButton) {
+function toggleButtonState (formElement, inputSelector, submitButton, validationSelectors) {
   const inputList = formElement.querySelectorAll(inputSelector)
 
   if (hasInvalidInput(inputList)) {
