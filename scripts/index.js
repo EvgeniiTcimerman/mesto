@@ -1,39 +1,11 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
-
-
 // объявление селекторов
 
 const selectors = {
   buttonEdit: '.profile__edit-button',
   buttonAdd: '.profile__add-button',
-  closePopupProfileButton: '.popup__close_type_edit',
-  closePopupPlaceButton: '.popup__close_type_add',
-  closePopupImageButton: '.popup__close_type_img',
+  buttonCloseEditProfile: '.popup__close_type_edit',
+  buttonCloseEditPlace: '.popup__close_type_add',
+  buttonCloseImagePopup: '.popup__close_type_img',
   popupProfileForm: '.popup_type_edit .popup__form',
   popupProfilePlace: '.popup_type_new-card .popup__form',
   popupImage: '.popup_type_image',
@@ -52,8 +24,8 @@ const selectors = {
   photo: '.place__photo',
   popupProfile: '.popup_type_edit',
   popupPlace: '.popup_type_new-card',
-  likeButton: '.place__like',
-  deleteButton: '.place__delete',
+  buttonLikeCard: '.place__like',
+  buttonDeleteCard: '.place__delete',
   popupWindow: '.popup'
 }
 
@@ -62,9 +34,9 @@ const selectors = {
 const buttonEdit = document.querySelector(selectors.buttonEdit);
 const buttonAdd = document.querySelector(selectors.buttonAdd);
 
-const closePopupProfileButton = document.querySelector(selectors.closePopupProfileButton);
-const closePopupPlaceButton = document.querySelector(selectors.closePopupPlaceButton);
-const closePopupImageButton = document.querySelector(selectors.closePopupImageButton);
+const buttonCloseEditProfile = document.querySelector(selectors.buttonCloseEditProfile);
+const buttonCloseEditPlace = document.querySelector(selectors.buttonCloseEditPlace);
+const buttonCloseImagePopup = document.querySelector(selectors.buttonCloseImagePopup);
 
 const popupWindow = document.querySelectorAll(selectors.popupWindow);
 const popupProfileForm = document.querySelector(selectors.popupProfileForm);
@@ -88,23 +60,27 @@ const places = document.querySelector(selectors.places);
 
 // функция открытия и закрытия popup
 
-const handleEscUp = (evt) => {
-   if (evt.key === 'Escape') {
-    closePopup(popupProfile);
-    closePopup(popupPlace);
-    closePopup(popupImage);
-  }
-};
+
 
 function openPopup(modal) {
   document.addEventListener('keydown', handleEscUp);
   modal.classList.add('popup_opened');
 }
 
+
 function closePopup(modal) {
   document.removeEventListener('keydown', handleEscUp);
   modal.classList.remove("popup_opened");
 }
+
+
+const handleEscUp = (evt) => {
+  if (evt.key === 'Escape') {
+   const popupOpen = document.querySelector('.popup_opened');
+   closePopup(popupOpen);
+ }
+}
+
 
 // функция редактирования имени профиля
 
@@ -126,14 +102,14 @@ function createCard(card) {
   const createPlace = templateCard.cloneNode(true);
   const placeText = createPlace.querySelector(selectors.text);
   const placePhoto = createPlace.querySelector(selectors.photo);
-  const likeButton = createPlace.querySelector(selectors.likeButton);
-  const deleteButton = createPlace.querySelector(selectors.deleteButton);
+  const buttonLikeCard = createPlace.querySelector(selectors.buttonLikeCard);
+  const buttonDeleteCard = createPlace.querySelector(selectors.buttonDeleteCard);
 
-  likeButton.addEventListener('click', function() {
-    likeButton.classList.toggle("place__like_active");
+  buttonLikeCard.addEventListener('click', function() {
+    buttonLikeCard.classList.toggle("place__like_active");
   });
 
-  deleteButton.addEventListener('click', function() {
+  buttonDeleteCard.addEventListener('click', function() {
     createPlace.remove();
   })
 
@@ -174,15 +150,15 @@ createInitialsCards();
   popupProfilePlace.reset();
   openPopup(popupPlace)});
 
-  closePopupProfileButton.addEventListener('click', () => {
+  buttonCloseEditProfile.addEventListener('click', () => {
   closePopup(popupProfile);
 });
 
-closePopupPlaceButton.addEventListener('click', () => {
+  buttonCloseEditPlace.addEventListener('click', () => {
   closePopup(popupPlace);
 });
 
-closePopupImageButton.addEventListener('click', () => {
+  buttonCloseImagePopup.addEventListener('click', () => {
   closePopup(popupImage);
 });
 

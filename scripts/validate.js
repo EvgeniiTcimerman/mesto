@@ -1,4 +1,3 @@
-
 // селекторы
 const validationSelectors = {
   formSelector: '.popup__form',
@@ -9,19 +8,29 @@ const validationSelectors = {
   errorClass: '.popup__edit_invalid'
 }; 
 
-// функция отображения ошибки
-function showInputError (formElement, inputElement, errorMessage) {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(validationSelectors.errorClass);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(validationSelectors.inputErrorClass);
+enableValidation(validationSelectors);
+
+
+function enableValidation (validationSelectors) {
+  const formList = Array.from(document.querySelectorAll(validationSelectors.formSelector));
+  formList.forEach((formElement) => {
+    setEventListeners(formElement);
+  });
 }
-// функция скрытия ошибки
-function hideInputError (formElement, inputElement) {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`); 
-  inputElement.classList.remove(validationSelectors.errorClass);
-  errorElement.classList.remove(validationSelectors.inputErrorClass);
-  errorElement.textContent = '';
+
+
+function setEventListeners (formElement) {
+  const inputList = Array.from(formElement.querySelectorAll(validationSelectors.inputSelector));
+  const submitButton = formElement.querySelector(validationSelectors.submitButtonSelector);
+
+  disableSubmitButton (validationSelectors, submitButton);
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      checkInputValidity(formElement, inputElement);
+      toggleButtonState(formElement, validationSelectors.inputSelector, submitButton);
+    });
+  });
 }
 
 
@@ -33,41 +42,49 @@ function checkInputValidity (formElement, inputElement) {
   }
 }
 
-function setEventListeners (formElement) {
-  const inputList = Array.from(formElement.querySelectorAll(validationSelectors.inputSelector));
-  const submitButton = formElement.querySelector(validationSelectors.submitButtonSelector);
 
-  toggleButtonState(formElement, validationSelectors.inputSelector, submitButton);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(formElement, validationSelectors.inputSelector, submitButton);
-    });
-  });
+// функция отображения ошибки
+function showInputError (formElement, inputElement, errorMessage) {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.add(validationSelectors.errorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(validationSelectors.inputErrorClass);
 }
 
-function enableValidation () {
-  const formList = Array.from(document.querySelectorAll(validationSelectors.formSelector));
-  formList.forEach((formElement) => {
-    setEventListeners(formElement);
-  });
+
+// функция скрытия ошибки
+function hideInputError (formElement, inputElement) {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`); 
+  inputElement.classList.remove(validationSelectors.errorClass);
+  errorElement.classList.remove(validationSelectors.inputErrorClass);
+  errorElement.textContent = '';
 }
 
-enableValidation();
-
-function hasInvalidInput (inputList) {
-  return Array.from(inputList).some((inputElement) => !inputElement.validity.valid);
-}
 
 function toggleButtonState (formElement, inputSelector, submitButton) {
   const inputList = formElement.querySelectorAll(inputSelector)
 
   if (hasInvalidInput(inputList)) {
-    submitButton.classList.add(validationSelectors.inactiveButtonClass);
-    submitButton.setAttribute('disabled', 'disabled'); 
+    disableSubmitButton  (validationSelectors, submitButton); 
   } else {
-    submitButton.classList.remove(validationSelectors.inactiveButtonClass);
-    submitButton.removeAttribute('disabled');
+    enableSubmitButton (validationSelectors, submitButton);
   }
 }
+
+
+function disableSubmitButton (validationSelectors, submitButton) {
+  submitButton.classList.add(validationSelectors.inactiveButtonClass);
+  submitButton.setAttribute('disabled', 'disabled');
+}
+
+function enableSubmitButton (validationSelectors, submitButton) {
+  submitButton.classList.remove(validationSelectors.inactiveButtonClass);
+  submitButton.removeAttribute('disabled');
+}
+
+
+function hasInvalidInput (inputList) {
+  return Array.from(inputList).some((inputElement) => !inputElement.validity.valid);
+}
+
+
