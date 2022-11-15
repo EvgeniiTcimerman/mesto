@@ -5,11 +5,13 @@ export class FormValidator {
     this._inputList = this._formElement.querySelectorAll(
       this._validationSelectors.inputSelector
     );
+    this._submitButton = this._formElement.querySelector(
+      this._validationSelectors.submitButtonSelector
+    );
   }
 
   enableValidation() {
     this._setEventListeners();
-    this._disableSubmitButton();
   }
 
   _setEventListeners() {
@@ -53,10 +55,6 @@ export class FormValidator {
   }
 
   _toggleButtonState() {
-    const inputList = this._formElement.querySelectorAll(
-      this._validationSelectors.inputSelector
-    );
-
     if (this._hasInvalidInput()) {
       this._disableSubmitButton();
     } else {
@@ -65,21 +63,17 @@ export class FormValidator {
   }
 
   _disableSubmitButton() {
-    const submitButton = this._formElement.querySelector(
-      this._validationSelectors.submitButtonSelector
+    this._submitButton.classList.add(
+      this._validationSelectors.inactiveButtonClass
     );
-    submitButton.classList.add(this._validationSelectors.inactiveButtonClass);
-    submitButton.setAttribute("disabled", "disabled");
+    this._submitButton.setAttribute("disabled", "disabled");
   }
 
   _enableSubmitButton() {
-    const submitButton = this._formElement.querySelector(
-      this._validationSelectors.submitButtonSelector
-    );
-    submitButton.classList.remove(
+    this._submitButton.classList.remove(
       this._validationSelectors.inactiveButtonClass
     );
-    submitButton.removeAttribute("disabled");
+    this._submitButton.removeAttribute("disabled");
   }
 
   _hasInvalidInput() {

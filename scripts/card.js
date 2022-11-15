@@ -1,24 +1,24 @@
 export class Card {
-  constructor(name, link, openPopup) {
+  constructor(name, link, template, openPopup) {
     this._name = name;
     this._link = link;
+    this._template = template;
     this._openPopup = openPopup;
   }
 
   _getCardTemplate() {
     const cardElement = document
-      .querySelector(".template-place")
+      .querySelector(this._template)
       .content.querySelector(".place")
       .cloneNode(true);
-
     return cardElement;
   }
 
-  createCard() {
+  generateCard() {
     this._cardElement = this._getCardTemplate();
     this._cardElement.querySelector(".place__name").textContent = this._name;
-    this._cardElement.querySelector(".place__photo").src = this._link;
-    this._cardElement.querySelector(".place__photo").alt = this._name;
+    this._cardImage().src = this._link;
+    this._cardImage().alt = this._name;
 
     this._setEventListeners();
 
@@ -32,20 +32,20 @@ export class Card {
         this._handleDeleteCard();
       });
 
-    this._cardElement
-      .querySelector(".place__like")
-      .addEventListener("click", () => {
-        this._handleLikeCard();
-      });
+    this._likeButton().addEventListener("click", () => {
+      this._handleLikeCard();
+    });
 
-    this._cardElement
-      .querySelector(".place__photo")
-      .addEventListener("click", () => {
-        this._openPopup(document.querySelector(".popup_type_image"));
-        document.querySelector(".popup__img").src = this._link;
-        document.querySelector(".popup__subtitle").textContent = this._name;
-        document.querySelector(".popup__img").alt = `Фото ${this._name}`;
-      });
+    this._cardImage().addEventListener("click", () => {
+      this._handleOpenPopup();
+    });
+  }
+
+  _handleOpenPopup() {
+    this._openPopup(document.querySelector(".popup_type_image"));
+    this._handlePopupImage().src = this._link;
+    this._handlePopupName().textContent = this._name;
+    this._handlePopupImage().alt = `Фото ${this._name}`;
   }
 
   _handleDeleteCard() {
@@ -53,8 +53,26 @@ export class Card {
   }
 
   _handleLikeCard() {
-    this._cardElement
-      .querySelector(".place__like")
-      .classList.toggle("place__like_active");
+    this._likeButton().classList.toggle("place__like_active");
+  }
+
+  _cardImage() {
+    const image = this._cardElement.querySelector(".place__photo");
+    return image;
+  }
+
+  _likeButton() {
+    const like = this._cardElement.querySelector(".place__like");
+    return like;
+  }
+
+  _handlePopupImage() {
+    const popupImage = document.querySelector(".popup__img");
+    return popupImage;
+  }
+
+  _handlePopupName() {
+    const popupName = document.querySelector(".popup__subtitle");
+    return popupName;
   }
 }
