@@ -91,13 +91,13 @@ const popupProfilePlace = document.querySelector(selectors.popupProfilePlace);
 const popupProfile = document.querySelector(selectors.popupProfile);
 const popupPlace = document.querySelector(selectors.popupPlace);
 const popupImage = document.querySelector(selectors.popupImage);
-const popupPhoto = popupImage.querySelector(selectors.popupPhoto);
-const popupPhotoText = popupImage.querySelector(selectors.popupPhotoText);
+// const popupPhoto = popupImage.querySelector(selectors.popupPhoto);
+// const popupPhotoText = popupImage.querySelector(selectors.popupPhotoText);
 
 const nameInput = popupProfileForm.querySelector(selectors.nameInput);
 const jobInput = popupProfileForm.querySelector(selectors.jobInput);
-const placeTitleInput = document.querySelector(selectors.placeTitleInput);
-const placeLinkInput = document.querySelector(selectors.placeLinkInput);
+// const placeTitleInput = document.querySelector(selectors.placeTitleInput);
+// const placeLinkInput = document.querySelector(selectors.placeLinkInput);
 
 const profileName = document.querySelector(selectors.profileName);
 const profileJob = document.querySelector(selectors.profileJob);
@@ -135,14 +135,6 @@ function submitHandlerProfileForm(evt) {
   fillProfileFromInputs();
   closePopup(popupProfile);
 }
-
-// функция создания начальных карточек
-
-// function addCard(item) {
-//   const card = new Card(item.name, item.link, openPopup, template);
-//   const cardElement = card.generateCard();
-
-// }
 
 const createCard = (name, link, template) => {
   const card = new Card(name, link, template, openPopup);
@@ -202,13 +194,13 @@ buttonCloseImagePopup.addEventListener("click", () => {
 
 popupProfileForm.addEventListener("submit", submitHandlerProfileForm);
 
-popupList.forEach(function (popupList) {
-  popupList.addEventListener("mousedown", (evt) => {
+popupList.forEach(function (popup) {
+  popup.addEventListener("mousedown", (evt) => {
     if (
       evt.target.classList.contains("popup_opened") ||
       evt.target.classList.contains("popup__close")
     ) {
-      closePopup(popupList);
+      closePopup(popup);
     }
   });
 });
