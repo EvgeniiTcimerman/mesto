@@ -1,9 +1,9 @@
 export class Card {
-  constructor(name, link, template, openPopup) {
+  constructor(name, link, template, handleOpenPopup) {
     this._name = name;
     this._link = link;
     this._template = template;
-    this._openPopup = openPopup;
+    this._handleOpenPopup = handleOpenPopup;
   }
 
   _getCardTemplate() {
@@ -38,15 +38,8 @@ export class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._handleOpenPopup();
+      this._handleOpenPopup(this._name, this._link);
     });
-  }
-
-  _handleOpenPopup() {
-    this._openPopup(document.querySelector(".popup_type_image"));
-    this._handlePopupImage().src = this._link;
-    this._handlePopupName().textContent = this._name;
-    this._handlePopupImage().alt = `Фото ${this._name}`;
   }
 
   _handleDeleteCard() {
@@ -60,15 +53,5 @@ export class Card {
   _likeButton() {
     const like = this._cardElement.querySelector(".place__like");
     return like;
-  }
-
-  _handlePopupImage() {
-    const popupImage = document.querySelector(".popup__img");
-    return popupImage;
-  }
-
-  _handlePopupName() {
-    const popupName = document.querySelector(".popup__subtitle");
-    return popupName;
   }
 }

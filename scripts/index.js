@@ -91,8 +91,8 @@ const popupProfilePlace = document.querySelector(selectors.popupProfilePlace);
 const popupProfile = document.querySelector(selectors.popupProfile);
 const popupPlace = document.querySelector(selectors.popupPlace);
 const popupImage = document.querySelector(selectors.popupImage);
-// const popupPhoto = popupImage.querySelector(selectors.popupPhoto);
-// const popupPhotoText = popupImage.querySelector(selectors.popupPhotoText);
+const popupPhoto = popupImage.querySelector(selectors.popupPhoto);
+const popupPhotoText = popupImage.querySelector(selectors.popupPhotoText);
 
 const nameInput = popupProfileForm.querySelector(selectors.nameInput);
 const jobInput = popupProfileForm.querySelector(selectors.jobInput);
@@ -136,8 +136,15 @@ function submitHandlerProfileForm(evt) {
   closePopup(popupProfile);
 }
 
+function handleOpenPopup(name, link) {
+  popupPhoto.src = link;
+  popupPhoto.alt = name;
+  popupPhotoText.textContent = name;
+  openPopup(popupImage);
+}
+
 const createCard = (name, link, template) => {
-  const card = new Card(name, link, template, openPopup);
+  const card = new Card(name, link, template, handleOpenPopup);
   const cardElement = card.generateCard();
   return cardElement;
 };
@@ -148,17 +155,21 @@ initialCards.forEach((item) => {
 
 // обработчики событий
 
-function formValid(form) {
-  const formValid = new FormValidator(validationSelectors, form);
+const profileFormValid = new FormValidator(
+  validationSelectors,
+  popupProfileForm
+);
 
-  formValid.enableValidation();
-}
+const placeFormValid = new FormValidator(
+  validationSelectors,
+  popupProfilePlace
+);
 
 buttonEdit.addEventListener("click", () => {
   nameInput.value = profileName.textContent.trim();
   jobInput.value = profileJob.textContent.trim();
 
-  formValid(popupProfileForm);
+  profileFormValid.enableValidation();
 
   openPopup(popupProfile);
 });
@@ -166,7 +177,7 @@ buttonEdit.addEventListener("click", () => {
 buttonAdd.addEventListener("click", () => {
   popupProfilePlace.reset();
 
-  formValid(popupProfilePlace);
+  placeFormValid.enableValidation();
 
   openPopup(popupPlace);
 });
