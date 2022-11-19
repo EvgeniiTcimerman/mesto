@@ -159,25 +159,25 @@ const profileFormValid = new FormValidator(
   validationSelectors,
   popupProfileForm
 );
+profileFormValid.enableValidation();
 
 const placeFormValid = new FormValidator(
   validationSelectors,
   popupProfilePlace
 );
+placeFormValid.enableValidation();
 
 buttonEdit.addEventListener("click", () => {
+  popupProfileForm.reset();
+
   nameInput.value = profileName.textContent.trim();
   jobInput.value = profileJob.textContent.trim();
-
-  profileFormValid.enableValidation();
 
   openPopup(popupProfile);
 });
 
 buttonAdd.addEventListener("click", () => {
   popupProfilePlace.reset();
-
-  placeFormValid.enableValidation();
 
   openPopup(popupPlace);
 });

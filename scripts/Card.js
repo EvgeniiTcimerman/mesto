@@ -16,7 +16,10 @@ export class Card {
 
   generateCard() {
     this._cardElement = this._getCardTemplate();
+
     this._cardImage = this._cardElement.querySelector(".place__photo");
+    this._cardLike = this._cardElement.querySelector(".place__like");
+
     this._cardElement.querySelector(".place__name").textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
@@ -33,7 +36,7 @@ export class Card {
         this._handleDeleteCard();
       });
 
-    this._likeButton().addEventListener("click", () => {
+    this._cardLike.addEventListener("click", () => {
       this._handleLikeCard();
     });
 
@@ -47,11 +50,6 @@ export class Card {
   }
 
   _handleLikeCard() {
-    this._likeButton().classList.toggle("place__like_active");
-  }
-
-  _likeButton() {
-    const like = this._cardElement.querySelector(".place__like");
-    return like;
+    this._cardLike.classList.toggle("place__like_active");
   }
 }
