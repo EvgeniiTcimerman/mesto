@@ -96,8 +96,6 @@ const popupPhotoText = popupImage.querySelector(selectors.popupPhotoText);
 
 const nameInput = popupProfileForm.querySelector(selectors.nameInput);
 const jobInput = popupProfileForm.querySelector(selectors.jobInput);
-// const placeTitleInput = document.querySelector(selectors.placeTitleInput);
-// const placeLinkInput = document.querySelector(selectors.placeLinkInput);
 
 const profileName = document.querySelector(selectors.profileName);
 const profileJob = document.querySelector(selectors.profileJob);
@@ -153,7 +151,7 @@ initialCards.forEach((item) => {
   placeCard.append(createCard(item.name, item.link, ".template-place"));
 });
 
-// обработчики событий
+// использование класса валидации
 
 const profileFormValid = new FormValidator(
   validationSelectors,
@@ -175,6 +173,8 @@ buttonEdit.addEventListener("click", () => {
 
   openPopup(popupProfile);
 });
+
+//обработчики событий
 
 buttonAdd.addEventListener("click", () => {
   popupProfilePlace.reset();
