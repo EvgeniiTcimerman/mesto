@@ -168,7 +168,7 @@ const placeFormValid = new FormValidator(
 placeFormValid.enableValidation();
 
 buttonEdit.addEventListener("click", () => {
-  popupProfileForm.reset();
+  profileFormValid.removeValidationErrors();
 
   nameInput.value = profileName.textContent.trim();
   jobInput.value = profileJob.textContent.trim();
@@ -178,6 +178,10 @@ buttonEdit.addEventListener("click", () => {
 
 buttonAdd.addEventListener("click", () => {
   popupProfilePlace.reset();
+
+  placeFormValid.removeValidationErrors();
+
+  placeFormValid.disableSubmitButton();
 
   openPopup(popupPlace);
 });
