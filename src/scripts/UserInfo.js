@@ -14,8 +14,6 @@ export class UserInfo {
   }
 
   setUserInfo({ profileName, description }) {
-    console.warn(this._profileName);
-    console.warn(profileName);
     this._profileName.textContent = profileName;
     this._profileDescription.textContent = description;
   }

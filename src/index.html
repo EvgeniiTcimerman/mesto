@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <script type="module" src="./scripts/index.js" defer></script>
     <title>Красивые места России</title>
   </head>
   <body class="page">
     <header class="header">
       <img
         class="header__logo"
-        src="./images/header_logo.svg"
+        src="<%=require('./images/header_logo.svg')%>"
         alt="Лого Место"
       />
     </header>
@@ -19,7 +17,7 @@
       <section class="profile">
         <img
           class="profile__photo"
-          src="./images/jacque_iv_cousteau.jpg"
+          src="<%=require('./images/jacque_iv_cousteau.jpg')%>"
           alt="Фото Жака Ива Кусто"
         />
         <div class="profile__info">
@@ -144,7 +142,7 @@
 
     <template class="template-place">
       <li class="place">
-        <img class="place__photo" src= alt= />
+        <img class="place__photo" src="" alt= />
         <button
           class="place__delete"
           type="button"
