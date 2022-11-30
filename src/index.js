@@ -5,75 +5,11 @@ import { Section } from "./scripts/Section.js";
 import { PopupWithImage } from "./scripts/PopupWithImage.js";
 import { PopupWithForm } from "./scripts/PopupWithForm.js";
 import { UserInfo } from "./scripts/UserInfo.js";
-
-// создание начальных карточек
-
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
-// объявление селекторов
-
-const selectors = {
-  buttonEdit: ".profile__edit-button",
-  buttonAdd: ".profile__add-button",
-  buttonCloseEditProfile: ".popup__close_type_edit",
-  buttonCloseEditPlace: ".popup__close_type_add",
-  buttonCloseImagePopup: ".popup__close_type_img",
-  popupProfileForm: ".popup_type_edit .popup__form",
-  popupProfilePlace: ".popup_type_new-card .popup__form",
-  popupImage: ".popup_type_image",
-  popupPhoto: ".popup__img",
-  popupPhotoText: ".popup__subtitle",
-  nameInput: ".popup__edit_type_name",
-  descriptionInput: ".popup__edit_type_description",
-  placeTitleInput: ".popup__edit_type_place-title",
-  placeLinkInput: ".popup__edit_type_place-link",
-  profileName: ".profile__name",
-  profileJob: ".profile__description",
-  template: ".template-place",
-  place: ".place",
-  placeCard: ".places__grid",
-  text: ".place__name",
-  photo: ".place__photo",
-  popupProfile: ".popup_type_edit",
-  popupPlace: ".popup_type_new-card",
-  buttonLikeCard: ".place__like",
-  buttonDeleteCard: ".place__delete",
-  popupList: ".popup",
-};
-
-const validationSelectors = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__edit",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: ".popup__submit-button_disabled",
-  inputErrorClass: ".popup__item-error",
-  errorClass: ".popup__edit_invalid",
-};
+import {
+  initialCards,
+  validationSelectors,
+  selectors,
+} from "./scripts/utils/constants.js";
 
 // объявление переменных
 
@@ -128,10 +64,7 @@ renderInitialCards.renderCards();
 
 const popupAddCard = new PopupWithForm(".popup_type_new-card", (formObject) => {
   renderInitialCards.addItem(
-    createCard({
-      name: formObject.name,
-      link: formObject.link,
-    })
+    createCard(formObject.title, formObject.link, ".template-place")
   );
   popupAddCard.close();
 });
@@ -148,7 +81,6 @@ const userInfo = new UserInfo({
 // открытие popup редактирования профиля
 
 const popupEditCard = new PopupWithForm(".popup_type_edit", (formObject) => {
-  console.warn(formObject);
   userInfo.setUserInfo({
     profileName: formObject.profileName,
     description: formObject.description,
@@ -193,13 +125,4 @@ buttonAdd.addEventListener("click", () => {
   placeFormValid.disableSubmitButton();
 
   popupAddCard.open();
-});
-
-popupProfilePlace.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  placeCard.prepend(
-    createCard(evt.target.title.value, evt.target.link.value, ".template-place")
-  );
-
-  popupAddCard.close();
 });
