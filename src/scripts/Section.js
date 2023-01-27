@@ -1,27 +1,14 @@
 export class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._renderedItems = items;
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
 
-  addItem(cardElement, position = "before") {
-    switch (position) {
-      case "before":
-        this._container.prepend(cardElement);
-        break;
-
-      case "after":
-        this._container.append(cardElement);
-        break;
-      default:
-        break;
-    }
+  addItem(cardElement) {
+    this._container.prepend(cardElement);
   }
 
-  renderCards() {
-    this._renderedItems.forEach((item) => {
-      this._renderer(item);
-    });
+  renderCards(res) {
+    res.forEach(this._renderer);
   }
 }

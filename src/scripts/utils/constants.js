@@ -1,31 +1,4 @@
-export { initialCards, validationSelectors, selectors };
-
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+export { validationSelectors, selectors };
 
 const validationSelectors = {
   formSelector: ".popup__form",
@@ -42,8 +15,10 @@ const selectors = {
   buttonCloseEditProfile: ".popup__close_type_edit",
   buttonCloseEditPlace: ".popup__close_type_add",
   buttonCloseImagePopup: ".popup__close_type_img",
+  buttonEditProfilePhoto: ".profile__photo-edit",
   popupProfileForm: ".popup_type_edit .popup__form",
   popupProfilePlace: ".popup_type_new-card .popup__form",
+  popupProfilePhoto: ".popup_type_edit-photo .popup__form",
   popupImage: ".popup_type_image",
   popupPhoto: ".popup__img",
   popupPhotoText: ".popup__subtitle",

@@ -1,0 +1,9 @@
+.profile__photo-area{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.profile__photo-area:hover {
+  opacity: 0.8;
+}

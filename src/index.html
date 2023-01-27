@@ -15,11 +15,18 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img
-          class="profile__photo"
-          src="<%=require('./images/jacque_iv_cousteau.jpg')%>"
-          alt="Фото Жака Ива Кусто"
-        />
+        <div class="profile__photo-area">
+          <img
+            class="profile__photo"
+            src="<%=require('./images/jacque_iv_cousteau.jpg')%>"
+            alt="Фото Жака Ива Кусто"
+          />
+          <button
+            class="profile__photo-edit"
+            type="button"
+            aria-label="Редактировать фото профиля"
+          ></button>
+        </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button
@@ -31,6 +38,37 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
+      <div class="popup popup_type_edit-photo">
+        <div class="popup__photo">
+          <button
+            class="popup__close popup__close_type-photo"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
+          <h3 class="popup__title popup__title-photo">Обновить аватар</h3>
+          <form class="popup__form" name="place" novalidate>
+            <input
+              class="popup__edit popup__edit_type_place-link"
+              type="url"
+              name="link"
+              id="link"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span
+              id="link-error"
+              class="popup__item-error popup__item-error_link"
+            ></span>
+            <button
+              class="popup__submit-button"
+              type="submit"
+              aria-label="Сохранить"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
       <div class="popup popup_type_edit">
         <div class="popup__content">
           <button
@@ -132,6 +170,23 @@
           <h3 class="popup__subtitle"></h3>
         </div>
       </div>
+      <div class="popup popup_type_delete">
+        <form class="popup__delete">
+          <button
+            class="popup__close popup__close_type_delete"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
+          <h3 class="popup__title popup__title_delete">Вы уверены?</h3>
+          <button
+            class="popup__submit-button"
+            type="submit"
+            aria-label="Сохранить"
+          >
+            Да
+          </button>
+        </form>
+      </div>
       <section class="places">
         <ul class="places__grid"></ul>
       </section>
@@ -142,7 +197,7 @@
 
     <template class="template-place">
       <li class="place">
-        <img class="place__photo" src= alt= />
+        <img class="place__photo" src="#" alt= />
         <button
           class="place__delete"
           type="button"
@@ -150,11 +205,14 @@
         ></button>
         <div class="place__info">
           <h2 class="place__name"></h2>
-          <button
-            class="place__like"
-            type="button"
-            aria-label="Нравится"
-          ></button>
+          <div class="place__likes">
+            <button
+              class="place__like"
+              type="button"
+              aria-label="Нравится"
+            ></button>
+            <p class="place__like-count"></p>
+          </div>
         </div>
       </li>
     </template>

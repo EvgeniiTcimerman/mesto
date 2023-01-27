@@ -1,7 +1,11 @@
 .place__info {
     background-color: #fff;
     max-width: 282px;
+    height: 60px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 22px;
     border-radius: 0 0 10px 10px;
 }

@@ -9,6 +9,8 @@
 /* profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__photo/profile__photo.css);
+@import url(../blocks/profile/__photo/profile__photo-area.css);
+@import url(../blocks/profile/__photo/profile__photo-edit.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__description/profile__description.css);
@@ -18,8 +20,11 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__photo/popup__photo.css);
+@import url(../blocks/popup/__title/_photo/popup___title_photo.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__title/_delete/popup__title_delete.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__edit/popup__edit.css);
 @import url(../blocks/popup/__edit/_invalid/popup__edit_invalid.css);
@@ -27,8 +32,10 @@
 @import url(../blocks/popup/__edit/_type/popup__edit_type_description.css);
 @import url(../blocks/popup/__edit/_type/popup__edit_type_place-link.css);
 @import url(../blocks/popup/__edit/_type/popup__edit_type_place-title.css);
+@import url(../blocks/popup/__delete/popup__delete.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/_type/popup_type_image.css);
+@import url(../blocks/popup/_type/popup_type_delete.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__subtitle/popup__subtitle.css);
@@ -41,7 +48,9 @@
 @import url(../blocks/place/__delete/place__delete.css);
 @import url(../blocks/place/__info/place__info.css);
 @import url(../blocks/place/__name/place__name.css);
+@import url(../blocks/place/__likes/place__likes.css);
 @import url(../blocks/place/__like/place__like.css);
+@import url(../blocks/place/__like-count/place__like-count.css);
 @import url(../blocks/place/__like/_active/place__like_active.css);
 /* footer */
 @import url(../blocks/footer/footer.css);

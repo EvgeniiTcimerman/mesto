@@ -1,0 +1,15 @@
+/* popup_type_delete {
+  background-color: #fff;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  position: relative;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .popup__content {
+      width: 282px;
+
+  }
+} */
