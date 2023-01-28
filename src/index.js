@@ -7,24 +7,19 @@ import { PopupWithForm } from "./scripts/PopupWithForm.js";
 import { UserInfo } from "./scripts/UserInfo.js";
 import { Api } from "./scripts/Api";
 import { PopupWithNotice } from "./scripts/PopupWithNotice";
-import { validationSelectors, selectors } from "./scripts/utils/constants.js";
+import { validationSelectors, selectors } from "./scripts/utils/selectors.js";
+import {
+  buttonEdit,
+  buttonAdd,
+  buttonEditProfilePhoto,
+  popupProfileForm,
+  popupProfilePlace,
+  popupProfilePhoto,
+  nameInput,
+  descriptionInput,
+} from "./scripts/utils/constants.js";
 
 // объявление переменных
-
-const buttonEdit = document.querySelector(selectors.buttonEdit);
-const buttonAdd = document.querySelector(selectors.buttonAdd);
-const buttonEditProfilePhoto = document.querySelector(
-  selectors.buttonEditProfilePhoto
-);
-
-const popupProfileForm = document.querySelector(selectors.popupProfileForm);
-const popupProfilePlace = document.querySelector(selectors.popupProfilePlace);
-const popupProfilePhoto = document.querySelector(selectors.popupProfilePhoto);
-
-const nameInput = popupProfileForm.querySelector(selectors.nameInput);
-const descriptionInput = popupProfileForm.querySelector(
-  selectors.descriptionInput
-);
 
 const api = new Api({
   url: "https://mesto.nomoreparties.co/v1/cohort-57/",
@@ -102,10 +97,6 @@ const renderInitialCards = new Section(
   },
   ".places__grid"
 );
-
-api.getInitialCards().then((cards) => {
-  renderInitialCards.renderCards(cards);
-});
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardData]) => {
